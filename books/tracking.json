@@ -7,7 +7,7 @@
       "source": "https://www.gutenberg.org/ebooks/2209",
       "local_file": "hong_lou_meng.txt",
       "current_line": 0,
-      "total_lines": 0,
+      "total_lines": 180,
       "status": "to_read",
       "episode_size": 200
     },
@@ -18,7 +18,7 @@
       "source": "https://www.gutenberg.org/ebooks/2208",
       "local_file": "xi_you_ji.txt",
       "current_line": 0,
-      "total_lines": 0,
+      "total_lines": 1000,
       "status": "to_read",
       "episode_size": 200
     },
@@ -29,7 +29,7 @@
       "source": "Project Gutenberg / 公共領域",
       "local_file": "shui_hu_zhuan.txt",
       "current_line": 0,
-      "total_lines": 0,
+      "total_lines": 1000,
       "status": "to_read",
       "episode_size": 200
     }
