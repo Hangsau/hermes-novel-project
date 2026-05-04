@@ -24,9 +24,10 @@ fi
 
 git commit -m "$COMMIT_MSG"
 
-# Push to GitHub
-if git push origin main; then
-    echo "✓ Successfully pushed to GitHub"
+# Push to GitHub (branch is master)
+CURRENT_BRANCH=$(git branch --show-current)
+if git push origin "$CURRENT_BRANCH"; then
+    echo "✓ Successfully pushed to GitHub branch $CURRENT_BRANCH"
 else
     echo "✗ Failed to push to GitHub"
     exit 1
