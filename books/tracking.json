@@ -1,0 +1,37 @@
+{
+  "novels": [
+    {
+      "id": "dream_of_red_mansion",
+      "name": "《紅樓夢》",
+      "language": "zh",
+      "source": "https://www.gutenberg.org/ebooks/2209",
+      "local_file": "hong_lou_meng.txt",
+      "current_line": 0,
+      "total_lines": 0,
+      "status": "to_read",
+      "episode_size": 200
+    },
+    {
+      "id": "journey_to_the_west",
+      "name": "《西遊記》",
+      "language": "zh",
+      "source": "https://www.gutenberg.org/ebooks/2208",
+      "local_file": "xi_you_ji.txt",
+      "current_line": 0,
+      "total_lines": 0,
+      "status": "to_read",
+      "episode_size": 200
+    },
+    {
+      "id": "water_margin",
+      "name": "《水滸傳》",
+      "language": "zh",
+      "source": "Project Gutenberg / 公共領域",
+      "local_file": "shui_hu_zhuan.txt",
+      "current_line": 0,
+      "total_lines": 0,
+      "status": "to_read",
+      "episode_size": 200
+    }
+  ]
+}
