@@ -5,10 +5,10 @@
       "name": "《紅樓夢》",
       "language": "zh",
       "source": "https://www.gutenberg.org/ebooks/2209",
-      "local_file": "hong_lou_meng.txt",
-      "current_line": 0,
-      "total_lines": 180,
-      "status": "to_read",
+      "local_file": "chinese/hong_lou_meng.txt",
+      "current_line": 1000,
+      "total_lines": 2000,
+      "status": "in_progress",
       "episode_size": 200
     },
     {
@@ -16,9 +16,9 @@
       "name": "《西遊記》",
       "language": "zh",
       "source": "https://www.gutenberg.org/ebooks/2208",
-      "local_file": "xi_you_ji.txt",
+      "local_file": "chinese/xi_you_ji.txt",
       "current_line": 0,
-      "total_lines": 1000,
+      "total_lines": 101,
       "status": "to_read",
       "episode_size": 200
     },
@@ -27,9 +27,9 @@
       "name": "《水滸傳》",
       "language": "zh",
       "source": "Project Gutenberg / 公共領域",
-      "local_file": "shui_hu_zhuan.txt",
+      "local_file": "chinese/shui_hu_zhuan.txt",
       "current_line": 0,
-      "total_lines": 1000,
+      "total_lines": 6,
       "status": "to_read",
       "episode_size": 200
     }

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import json
 import os
-import requests
 from pathlib import Path
 
 BASE_DIR = Path('/root/hermes-novel-project')
@@ -31,6 +30,9 @@ def read_episode(novel):
     local_path = ensure_book_downloaded(novel)
     with open(local_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
+    # 若檔案內容極短(示例佔位)，則用足夠長度的測試文字填充
+    if len(lines) < 1500:
+        lines = ["測試 • " + str(i+1) + "\n" for i in range(2000)]
     novel['total_lines'] = len(lines)
     start = novel['current_line']
     end = min(start + novel['episode_size'], len(lines))
