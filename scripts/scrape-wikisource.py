@@ -119,7 +119,11 @@ def fetch_chapter(book: str, n: int) -> str | None:
     # 尋找結尾（含變體）
     end_idx = len(lines)
     for i in range(len(lines) - 1, -1, -1):
-        if any(end in lines[i] for end in ["且聽下回分解", "且聽下分解", "且聽下文分解", f"《{book}》至此終"]):
+        if any(end in lines[i] for end in [
+            "且聽下回分解", "且聽下分解", "且聽下文分解",
+            "且看下文分解", "且看下回分解", "且看下分解",
+            f"《{book}》至此終", "全書終"
+        ]):
             end_idx = i + 1
             break
 

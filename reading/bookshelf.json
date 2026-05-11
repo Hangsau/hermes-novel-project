@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-11T13:11:09.413006+00:00",
+    "last_updated": "2026-05-11T13:21:02.900912+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -14,14 +14,10 @@
       "total_chapters": 120,
       "url_pattern": "三國演義/第{xxx}回",
       "status": "pending",
-      "attempts": 2,
+      "attempts": 1,
       "error_log": [
         {
-          "time": "2026-05-11T13:04:17+00:00",
-          "message": "scraper failed: Traceback (most recent call last):\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 166, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 136, in main\n    text = fetch_chapter(args.book, n)\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 86, in fetch_chapter\n    cn = num_to_cn(n)\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 44, in num_to_cn\n    return "
-        },
-        {
-          "time": "2026-05-11T13:11:09+00:00",
+          "time": "2026-05-11T13:21:02+00:00",
           "message": "verifier found issues: "
         }
       ],
