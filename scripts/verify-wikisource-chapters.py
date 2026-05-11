@@ -19,7 +19,7 @@ import sys
 
 
 NAV_KEYWORDS = ["姊妹計劃", "資料項", "姊妹計划", "數据項", "检索自", "wikipedia", "wikisource"]
-ENDING_KEYWORDS = ["且聽下回分解", "且聽下分解", "且聽下文分解", "且看下文分解", "全書終", "至此終"]
+ENDING_KEYWORDS = ["且聽下回分解", "且聽下分解", "且聽下文分解", "且看下文分解", "且看下回分解", "且看下分解", "全書終", "至此終"]
 SUSPICIOUS_STARTS = ["詩曰", "話表", "卻說", "蓛聞"]
 
 
@@ -51,7 +51,7 @@ def verify_chapter(path: str, book: str) -> dict:
     #    but if combined with other issues, it's suspicious.
     #    Relaxed: only flag if first line is very short AND suspicious.
     if any(first_line.startswith(s) for s in SUSPICIOUS_STARTS):
-        if len(first_line) < 30:
+        if len(first_line) < 20:
             issues.append("possible_missing_title")
         else:
             # Just a warning, not a failure

@@ -1,29 +1,10 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-11T13:21:02.900912+00:00",
+    "last_updated": "2026-05-11T13:25:00+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
-    {
-      "id": "sanguo_yanyi",
-      "name": "三國演義",
-      "author": "羅貫中",
-      "language": "zh-classical",
-      "source": "wikisource",
-      "total_chapters": 120,
-      "url_pattern": "三國演義/第{xxx}回",
-      "status": "pending",
-      "attempts": 1,
-      "error_log": [
-        {
-          "time": "2026-05-11T13:21:02+00:00",
-          "message": "verifier found issues: "
-        }
-      ],
-      "downloaded_at": null,
-      "verified_at": null
-    },
     {
       "id": "shui_hu_zhuan",
       "name": "水滸傳",
@@ -121,12 +102,24 @@
       "downloaded_at": "2026-05-10",
       "verified_at": "2026-05-10",
       "path": "by_book/西遊記"
+    },
+    {
+      "id": "sanguo_yanyi",
+      "name": "三國演義",
+      "author": "羅貫中",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 120,
+      "status": "completed",
+      "downloaded_at": "2026-05-11",
+      "verified_at": "2026-05-11",
+      "path": "by_book/sanguo_yanyi"
     }
   ],
   "stats": {
-    "total_pending": 7,
-    "total_completed": 1,
+    "total_pending": 6,
+    "total_completed": 2,
     "total_failed": 0,
-    "last_fetch_date": null
+    "last_fetch_date": "2026-05-11"
   }
 }
