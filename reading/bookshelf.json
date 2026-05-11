@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "version": 1,
+    "last_updated": "2026-05-11T13:11:09.413006+00:00",
+    "source": "hermes-novel-project/reading"
+  },
+  "queue": [
+    {
+      "id": "sanguo_yanyi",
+      "name": "三國演義",
+      "author": "羅貫中",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 120,
+      "url_pattern": "三國演義/第{xxx}回",
+      "status": "pending",
+      "attempts": 2,
+      "error_log": [
+        {
+          "time": "2026-05-11T13:04:17+00:00",
+          "message": "scraper failed: Traceback (most recent call last):\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 166, in <module>\n    sys.exit(main())\n             ~~~~^^\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 136, in main\n    text = fetch_chapter(args.book, n)\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 86, in fetch_chapter\n    cn = num_to_cn(n)\n  File \"/root/hermes-novel-project/scripts/scrape-wikisource.py\", line 44, in num_to_cn\n    return "
+        },
+        {
+          "time": "2026-05-11T13:11:09+00:00",
+          "message": "verifier found issues: "
+        }
+      ],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "shui_hu_zhuan",
+      "name": "水滸傳",
+      "author": "施耐庵",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 100,
+      "url_pattern": "水滸傳/第{xxx}回",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "hong_lou_meng",
+      "name": "紅樓夢",
+      "author": "曹雪茄",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 120,
+      "url_pattern": "紅樓夢/第{xxx}回",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "feng_shen_yanyi",
+      "name": "封神演義",
+      "author": "許仲琳",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 100,
+      "url_pattern": "封神演義/第{xxx}回",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "dong_zhou_lieguo_zhi",
+      "name": "东周列國誌",
+      "author": "冯梦龙",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 108,
+      "url_pattern": "东周列國誌/第{xxx}回",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "ru_lin_wai_shi",
+      "name": "儒林外史",
+      "author": "吳敬梓",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 56,
+      "url_pattern": "儒林外史/第{xxx}回",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    },
+    {
+      "id": "liao_zhai_zhi_yi",
+      "name": "聊齋誌異",
+      "author": "蒲松齡",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 0,
+      "note": "短篇集，無回目結構，需手動處理",
+      "status": "pending",
+      "attempts": 0,
+      "error_log": [],
+      "downloaded_at": null,
+      "verified_at": null
+    }
+  ],
+  "completed": [
+    {
+      "id": "xi_you_ji",
+      "name": "西遊記",
+      "author": "吳承恩",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 100,
+      "status": "completed",
+      "downloaded_at": "2026-05-10",
+      "verified_at": "2026-05-10",
+      "path": "by_book/西遊記"
+    }
+  ],
+  "stats": {
+    "total_pending": 7,
+    "total_completed": 1,
+    "total_failed": 0,
+    "last_fetch_date": null
+  }
+}
