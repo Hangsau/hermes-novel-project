@@ -78,13 +78,17 @@ def fetch_book(book: dict) -> tuple[bool, str]:
 
     # Run scraper
     scraper = SCRIPTS_DIR / "scrape-wikisource.py"
-    rc, out, err = run([
+    cmd = [
         sys.executable, str(scraper),
         "--book", book_name,
         "--chapters", str(total),
         "--output", str(out_dir),
-        "--delay", "0.5",
-    ])
+        "--delay", "1.0",
+    ]
+    wiki_name = book.get("wiki_name")
+    if wiki_name:
+        cmd += ["--wiki-name", wiki_name]
+    rc, out, err = run(cmd)
     if rc != 0:
         return False, f"scraper failed: {err[:500]}"
 
@@ -120,10 +124,10 @@ def main():
     queue = data.get("queue", [])
     completed = data.get("completed", [])
 
-    # Pick next pending book (attempts < 3)
+    # Pick next pending book (attempts < 3) — include 'downloading' to resume interrupted runs
     candidate = None
     for b in queue:
-        if b.get("status") == "pending" and b.get("attempts", 0) < 3:
+        if b.get("status") in ("pending", "downloading") and b.get("attempts", 0) < 3:
             candidate = b
             break
 

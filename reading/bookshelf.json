@@ -1,24 +1,10 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-11T13:25:00+00:00",
+    "last_updated": "2026-05-13T00:24:38.882571+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
-    {
-      "id": "shui_hu_zhuan",
-      "name": "水滸傳",
-      "author": "施耐庵",
-      "language": "zh-classical",
-      "source": "wikisource",
-      "total_chapters": 100,
-      "url_pattern": "水滸傳/第{xxx}回",
-      "status": "pending",
-      "attempts": 0,
-      "error_log": [],
-      "downloaded_at": null,
-      "verified_at": null
-    },
     {
       "id": "hong_lou_meng",
       "name": "紅樓夢",
@@ -28,7 +14,7 @@
       "total_chapters": 120,
       "url_pattern": "紅樓夢/第{xxx}回",
       "status": "pending",
-      "attempts": 0,
+      "attempts": 1,
       "error_log": [],
       "downloaded_at": null,
       "verified_at": null
@@ -74,20 +60,6 @@
       "error_log": [],
       "downloaded_at": null,
       "verified_at": null
-    },
-    {
-      "id": "liao_zhai_zhi_yi",
-      "name": "聊齋誌異",
-      "author": "蒲松齡",
-      "language": "zh-classical",
-      "source": "wikisource",
-      "total_chapters": 0,
-      "note": "短篇集，無回目結構，需手動處理",
-      "status": "pending",
-      "attempts": 0,
-      "error_log": [],
-      "downloaded_at": null,
-      "verified_at": null
     }
   ],
   "completed": [
@@ -114,11 +86,35 @@
       "downloaded_at": "2026-05-11",
       "verified_at": "2026-05-11",
       "path": "by_book/sanguo_yanyi"
+    },
+    {
+      "id": "shui_hu_zhuan",
+      "name": "水滸傳",
+      "author": "施耐庵",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 120,
+      "status": "completed",
+      "downloaded_at": null,
+      "verified_at": null,
+      "path": "by_book/shui_hu_zhuan"
+    },
+    {
+      "id": "liao_zhai_zhi_yi",
+      "name": "聊齋誌異",
+      "author": "蒲松齡",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 0,
+      "status": "completed",
+      "downloaded_at": null,
+      "verified_at": null,
+      "path": "by_book/liao_zhai_zhi_yi"
     }
   ],
   "stats": {
-    "total_pending": 6,
-    "total_completed": 2,
+    "total_pending": 4,
+    "total_completed": 4,
     "total_failed": 0,
     "last_fetch_date": "2026-05-11"
   }
