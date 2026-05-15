@@ -83,7 +83,7 @@ def fetch_book(book: dict) -> tuple[bool, str]:
         "--book", book_name,
         "--chapters", str(total),
         "--output", str(out_dir),
-        "--delay", "1.0",
+        "--delay", "3.0",
     ]
     wiki_name = book.get("wiki_name")
     if wiki_name:

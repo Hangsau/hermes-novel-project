@@ -15,6 +15,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -56,16 +57,37 @@ def num_to_cn(n: int) -> str:
     return tens[n // 10] + units[n % 10]
 
 
-def fetch_chapter(book: str, n: int) -> str | None:
-    """爬取單一章節，回傳清洗後的純文字。"""
-    url = f"https://zh.wikisource.org/wiki/{urllib.parse.quote(book)}/{urllib.parse.quote(f'第{n:03d}回')}"
+def fetch_chapter(wiki_name: str, book: str, n: int, retries: int = 3) -> str | None:
+    """爬取單一章節，回傳清洗後的純文字。429 時 exponential backoff retry。"""
+    url = f"https://zh.wikisource.org/wiki/{urllib.parse.quote(wiki_name)}/{urllib.parse.quote(f'第{n:03d}回')}"
     req = urllib.request.Request(url, headers=HEADERS)
 
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            html = resp.read().decode("utf-8")
-    except Exception as exc:
-        print(f"  Ch {n}: fetch failed — {exc}", file=sys.stderr)
+    for attempt in range(retries + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                if resp.status == 429:
+                    wait = 3 * (3 ** attempt)
+                    print(f"  Ch {n}: 429 rate-limited, retry {attempt+1}/{retries} in {wait}s", file=sys.stderr)
+                    time.sleep(wait)
+                    continue
+                html = resp.read().decode("utf-8")
+                break
+        except urllib.error.HTTPError as exc:
+            if exc.code == 429:
+                wait = 3 * (3 ** attempt)
+                print(f"  Ch {n}: 429 rate-limited, retry {attempt+1}/{retries} in {wait}s", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            print(f"  Ch {n}: HTTP {exc.code} — {exc}", file=sys.stderr)
+            return None
+        except Exception as exc:
+            print(f"  Ch {n}: fetch failed — {exc}", file=sys.stderr)
+            if attempt < retries:
+                time.sleep(2)
+                continue
+            return None
+    else:
+        print(f"  Ch {n}: exhausted retries after 429", file=sys.stderr)
         return None
 
     # 定位 mw-parser-output
@@ -137,23 +159,37 @@ def fetch_chapter(book: str, n: int) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Scrape classical Chinese novels from Wikisource")
     parser.add_argument("--book", required=True, help="Book name as used on zh.wikisource.org (e.g. 西遊記)")
+    parser.add_argument("--wiki-name", default="", help="Override page name used in URL (for versioned books like 水洲傳_(100回本))")
     parser.add_argument("--chapters", type=int, required=True, help="Total number of chapters")
     parser.add_argument("--output", required=True, help="Output directory")
-    parser.add_argument("--delay", type=float, default=0.3, help="Seconds between requests (default: 0.3)")
+    parser.add_argument("--delay", type=float, default=0.2, help="Seconds between requests (default: 0.2)")
     args = parser.parse_args()
 
     out_dir = os.path.expanduser(args.output)
     os.makedirs(out_dir, exist_ok=True)
 
+    wiki_name = args.wiki_name if args.wiki_name else args.book
+
     success = 0
     failed: list[int] = []
 
     for n in range(1, args.chapters + 1):
-        text = fetch_chapter(args.book, n)
+        md_path = os.path.join(out_dir, f"ch{n:03d}.md")
+        # Resume: skip if already downloaded and looks valid
+        if os.path.exists(md_path):
+            try:
+                if os.path.getsize(md_path) > 100:
+                    success += 1
+                    print(f"Ch {n}: SKIP (already exists)")
+                    continue
+            except Exception:
+                pass
+
+        text = fetch_chapter(wiki_name, args.book, n)
         if text and len(text) > 100:
-            path = os.path.join(out_dir, f"ch{n:03d}.txt")
-            with open(path, "w", encoding="utf-8") as f:
-                f.write(text)
+            md_text = f"# 第{n}回\n\n{text}\n"
+            with open(md_path, "w", encoding="utf-8") as f:
+                f.write(md_text)
             success += 1
             print(f"Ch {n}: OK ({len(text.splitlines())} lines)")
         else:
@@ -162,14 +198,15 @@ def main() -> int:
         time.sleep(args.delay)
 
     # 合併全文
-    full_path = os.path.join(out_dir, f"{args.book}_全文.txt")
+    full_path = os.path.join(out_dir, f"{args.book}_全文.md")
     with open(full_path, "w", encoding="utf-8") as outf:
+        outf.write(f"# 《{args.book}》\n\n")
         for n in range(1, args.chapters + 1):
-            ch_path = os.path.join(out_dir, f"ch{n:03d}.txt")
+            ch_path = os.path.join(out_dir, f"ch{n:03d}.md")
             if os.path.exists(ch_path):
                 with open(ch_path, "r", encoding="utf-8") as inf:
                     outf.write(inf.read())
-                    outf.write("\n\n")
+                    outf.write("\n\n---\n\n")
 
     print(f"\nDone: {success}/{args.chapters} chapters downloaded.")
     if failed:
