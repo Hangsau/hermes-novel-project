@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-13T00:24:38.882571+00:00",
+    "last_updated": "2026-05-17T22:16:04.386832+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -13,8 +13,8 @@
       "source": "wikisource",
       "total_chapters": 120,
       "url_pattern": "紅樓夢/第{xxx}回",
-      "status": "pending",
-      "attempts": 1,
+      "status": "downloading",
+      "attempts": 3,
       "error_log": [],
       "downloaded_at": null,
       "verified_at": null
