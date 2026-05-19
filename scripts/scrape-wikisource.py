@@ -57,9 +57,15 @@ def num_to_cn(n: int) -> str:
     return tens[n // 10] + units[n % 10]
 
 
-def fetch_chapter(wiki_name: str, book: str, n: int, retries: int = 3) -> str | None:
-    """爬取單一章節，回傳清洗後的純文字。429 時 exponential backoff retry。"""
-    url = f"https://zh.wikisource.org/wiki/{urllib.parse.quote(wiki_name)}/{urllib.parse.quote(f'第{n:03d}回')}"
+def fetch_chapter(wiki_name: str, book: str, n: int, retries: int = 3, chapter_pattern: str = "第{n:03d}回") -> str | None:
+    """爬取單一章節，回傳清洗後的純文字。429 時 exponential backoff retry。
+    
+    chapter_pattern: URL 中章節名稱格式，{n} 會被替換為章節號。
+    預設 "第{n:03d}回" 用於《西遊記》《紅樓夢》等；
+    "卷{n:03d}" 用於《封神演義》等使用"卷"而非"回"的書籍。
+    """
+    chapter_name = chapter_pattern.format(n=n)
+    url = f"https://zh.wikisource.org/wiki/{urllib.parse.quote(wiki_name)}/{urllib.parse.quote(chapter_name)}"
     req = urllib.request.Request(url, headers=HEADERS)
 
     for attempt in range(retries + 1):
@@ -160,6 +166,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Scrape classical Chinese novels from Wikisource")
     parser.add_argument("--book", required=True, help="Book name as used on zh.wikisource.org (e.g. 西遊記)")
     parser.add_argument("--wiki-name", default="", help="Override page name used in URL (for versioned books like 水洲傳_(100回本))")
+    parser.add_argument("--chapter-pattern", default="第{n:03d}回", help="Chapter URL pattern (e.g. '卷{n:03d}' for 封神演義)")
     parser.add_argument("--chapters", type=int, required=True, help="Total number of chapters")
     parser.add_argument("--output", required=True, help="Output directory")
     parser.add_argument("--delay", type=float, default=0.2, help="Seconds between requests (default: 0.2)")
@@ -185,7 +192,7 @@ def main() -> int:
             except Exception:
                 pass
 
-        text = fetch_chapter(wiki_name, args.book, n)
+        text = fetch_chapter(wiki_name, args.book, n, chapter_pattern=args.chapter_pattern)
         if text and len(text) > 100:
             md_text = f"# 第{n}回\n\n{text}\n"
             with open(md_path, "w", encoding="utf-8") as f:

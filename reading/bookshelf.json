@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-17T22:16:04.386832+00:00",
+    "last_updated": "2026-05-19T22:37:27.411358+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -26,10 +26,17 @@
       "language": "zh-classical",
       "source": "wikisource",
       "total_chapters": 100,
-      "url_pattern": "封神演義/第{xxx}回",
-      "status": "pending",
-      "attempts": 0,
-      "error_log": [],
+      "wiki_name": "封神演義",
+      "url_pattern": "卷{xxx}",
+      "chapter_pattern": "卷{n:03d}",
+      "status": "error",
+      "attempts": 3,
+      "error_log": [
+        {
+          "time": "2026-05-19T22:37:27+00:00",
+          "message": "verifier found issues: "
+        }
+      ],
       "downloaded_at": null,
       "verified_at": null
     },
@@ -115,7 +122,7 @@
   "stats": {
     "total_pending": 4,
     "total_completed": 4,
-    "total_failed": 0,
+    "total_failed": 1,
     "last_fetch_date": "2026-05-11"
   }
 }

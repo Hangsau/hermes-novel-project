@@ -76,9 +76,9 @@ def main() -> int:
         print(f"Error: not a directory: {ch_dir}", file=sys.stderr)
         return 1
 
-    files = sorted(f for f in os.listdir(ch_dir) if f.startswith("ch") and f.endswith(".txt"))
+    files = sorted(f for f in os.listdir(ch_dir) if f.startswith("ch") and f.endswith(".md"))
     if not files:
-        print("No chNNN.txt files found.", file=sys.stderr)
+        print("No chNNN.md files found.", file=sys.stderr)
         return 1
 
     all_ok = True

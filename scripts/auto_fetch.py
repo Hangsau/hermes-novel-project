@@ -25,7 +25,7 @@ def log(msg: str):
     print(line, flush=True)
 
 
-def run(cmd: list[str], cwd: Path = REPO_ROOT, timeout: int = 300) -> tuple[int, str, str]:
+def run(cmd: list[str], cwd: Path = REPO_ROOT, timeout: int = 900) -> tuple[int, str, str]:
     log(f"RUN {' '.join(cmd)}")
     proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout)
     if proc.returncode != 0:
@@ -83,11 +83,14 @@ def fetch_book(book: dict) -> tuple[bool, str]:
         "--book", book_name,
         "--chapters", str(total),
         "--output", str(out_dir),
-        "--delay", "3.0",
+        "--delay", "2.0",
     ]
     wiki_name = book.get("wiki_name")
     if wiki_name:
         cmd += ["--wiki-name", wiki_name]
+    chapter_pattern = book.get("chapter_pattern")
+    if chapter_pattern:
+        cmd += ["--chapter-pattern", chapter_pattern]
     rc, out, err = run(cmd)
     if rc != 0:
         return False, f"scraper failed: {err[:500]}"
