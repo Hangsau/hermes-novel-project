@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-19T22:37:27.411358+00:00",
+    "last_updated": "2026-05-19T22:47:20.920690+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -49,8 +49,13 @@
       "total_chapters": 108,
       "url_pattern": "东周列國誌/第{xxx}回",
       "status": "pending",
-      "attempts": 0,
-      "error_log": [],
+      "attempts": 1,
+      "error_log": [
+        {
+          "time": "2026-05-19T22:47:20+00:00",
+          "message": "scraper failed:   Ch 1: HTTP 404 — HTTP Error 404: Not Found\n  Ch 2: HTTP 404 — HTTP Error 404: Not Found\n  Ch 3: HTTP 404 — HTTP Error 404: Not Found\n  Ch 4: HTTP 404 — HTTP Error 404: Not Found\n  Ch 5: HTTP 404 — HTTP Error 404: Not Found\n  Ch 6: HTTP 404 — HTTP Error 404: Not Found\n  Ch 7: HTTP 404 — HTTP Error 404: Not Found\n  Ch 8: HTTP 404 — HTTP Error 404: Not Found\n  Ch 9: HTTP 404 — HTTP Error 404: Not Found\n  Ch 10: HTTP 404 — HTTP Error 404: Not Found\n  Ch 11: HTTP 404 — HTTP Error 404: Not Found\n  C"
+        }
+      ],
       "downloaded_at": null,
       "verified_at": null
     },
