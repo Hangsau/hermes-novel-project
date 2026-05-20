@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-19T22:47:20.920690+00:00",
+    "last_updated": "2026-05-20T22:19:34.015371+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -20,27 +20,6 @@
       "verified_at": null
     },
     {
-      "id": "feng_shen_yanyi",
-      "name": "封神演義",
-      "author": "許仲琳",
-      "language": "zh-classical",
-      "source": "wikisource",
-      "total_chapters": 100,
-      "wiki_name": "封神演義",
-      "url_pattern": "卷{xxx}",
-      "chapter_pattern": "卷{n:03d}",
-      "status": "error",
-      "attempts": 3,
-      "error_log": [
-        {
-          "time": "2026-05-19T22:37:27+00:00",
-          "message": "verifier found issues: "
-        }
-      ],
-      "downloaded_at": null,
-      "verified_at": null
-    },
-    {
       "id": "dong_zhou_lieguo_zhi",
       "name": "东周列國誌",
       "author": "冯梦龙",
@@ -48,8 +27,8 @@
       "source": "wikisource",
       "total_chapters": 108,
       "url_pattern": "东周列國誌/第{xxx}回",
-      "status": "pending",
-      "attempts": 1,
+      "status": "downloading",
+      "attempts": 3,
       "error_log": [
         {
           "time": "2026-05-19T22:47:20+00:00",
@@ -57,7 +36,9 @@
         }
       ],
       "downloaded_at": null,
-      "verified_at": null
+      "verified_at": null,
+      "wiki_name": "东周列国志",
+      "chapter_pattern": "第{n:03d}回"
     },
     {
       "id": "ru_lin_wai_shi",
@@ -68,10 +49,16 @@
       "total_chapters": 56,
       "url_pattern": "儒林外史/第{xxx}回",
       "status": "pending",
-      "attempts": 0,
-      "error_log": [],
+      "attempts": 2,
+      "error_log": [
+        {
+          "time": "2026-05-20T22:19:34+00:00",
+          "message": "verifier found issues: "
+        }
+      ],
       "downloaded_at": null,
-      "verified_at": null
+      "verified_at": null,
+      "chapter_pattern": "第{n:02d}回"
     }
   ],
   "completed": [
@@ -122,12 +109,24 @@
       "downloaded_at": null,
       "verified_at": null,
       "path": "by_book/liao_zhai_zhi_yi"
+    },
+    {
+      "id": "feng_shen_yanyi",
+      "name": "封神演義",
+      "author": "許仲琳",
+      "language": "zh-classical",
+      "source": "wikisource",
+      "total_chapters": 100,
+      "status": "completed",
+      "downloaded_at": "2026-05-19T22:37:20+00:00",
+      "verified_at": "2026-05-19T22:47:00+00:00",
+      "path": "by_book/feng_shen_yanyi"
     }
   ],
   "stats": {
-    "total_pending": 4,
-    "total_completed": 4,
+    "total_pending": 3,
+    "total_completed": 5,
     "total_failed": 1,
-    "last_fetch_date": "2026-05-11"
+    "last_fetch_date": "2026-05-19"
   }
 }
