@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "last_updated": "2026-05-20T22:19:34.015371+00:00",
+    "last_updated": "2026-05-21T22:15:40.860328+00:00",
     "source": "hermes-novel-project/reading"
   },
   "queue": [
@@ -48,11 +48,15 @@
       "source": "wikisource",
       "total_chapters": 56,
       "url_pattern": "儒林外史/第{xxx}回",
-      "status": "pending",
-      "attempts": 2,
+      "status": "error",
+      "attempts": 3,
       "error_log": [
         {
           "time": "2026-05-20T22:19:34+00:00",
+          "message": "verifier found issues: "
+        },
+        {
+          "time": "2026-05-21T22:15:40+00:00",
           "message": "verifier found issues: "
         }
       ],
@@ -126,7 +130,7 @@
   "stats": {
     "total_pending": 3,
     "total_completed": 5,
-    "total_failed": 1,
+    "total_failed": 2,
     "last_fetch_date": "2026-05-19"
   }
 }
