@@ -13,7 +13,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-REPO_ROOT = Path("/root/hermes-novel-project")
+REPO_ROOT = Path(os.environ.get("HERMES_NOVEL_REPO", "/home/hangsau/hermes-novel-project"))
 READING_DIR = REPO_ROOT / "reading"
 BOOKSHELF = READING_DIR / "bookshelf.json"
 SCRIPTS_DIR = REPO_ROOT / "scripts"
